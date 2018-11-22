@@ -18,6 +18,7 @@ class AddListItem extends Component {
   }
 
   handleSubmit = e => {
+    // change
     e.preventDefault();
     if(this.state.text != ''){
       const board = JSON.parse(JSON.stringify(this.props.board));
