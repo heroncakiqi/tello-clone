@@ -1,0 +1,74 @@
+
+.board-name {
+  border: blue solid 1px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.name {
+  text-align: center;
+}
+
+.board-content {
+  padding: 10px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.main-card {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.board-title {
+  background: #512da8;
+  color: aliceblue;
+  margin-left: 20px;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+
+h2{ 
+  margin: 0;
+  padding: 0;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.list-items {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.new-board {
+  background:  #512da8;
+  color: azure;
+}
+
+.col {
+ display: flex;
+ justify-content: center; 
+ align-items: flex-start;
+ margin-left: 0 !important;
+}
