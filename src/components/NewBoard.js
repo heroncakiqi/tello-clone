@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import shortid from 'shortid';
 
-import { toggleNewBoard, createNewBoard, loadBoards } from '../actions/newBoardActions';
+import { toggleNewBoard,createNewBoard, loadBoards } from '../actions/newBoardActions';
 import { addBoard } from '../helper';
 
 
@@ -15,8 +15,7 @@ class NewBoard extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     if(this.state.boardName != ''){
-      addBoard(this.state);
-      this.props.loadBoards();
+      this.props.createNewBoard(this.state);
       this.setState({boardName: '', id: shortid.generate()});
     }
   }
@@ -49,4 +48,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{ toggleNewBoard,createNewBoard, loadBoards })(NewBoard);
+export default connect(mapStateToProps,{ toggleNewBoard, createNewBoard, loadBoards })(NewBoard);

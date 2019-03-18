@@ -1,4 +1,5 @@
 import shortid from 'shortid';
+import { addBoard } from '../helper';
 
 export const toggleNewBoard = () => {
  return { 
@@ -6,15 +7,9 @@ export const toggleNewBoard = () => {
   }
 };
 
-export const createNewBoard = ({ boardName = '', lists = [] }) => {
-  return {
-    type: 'create_new_board',
-    payload: {
-      id: shortid.generate(),
-      boardName,
-      lists
-    }
-  }
+export const createNewBoard = (board) => dispatch => {
+  addBoard(board);
+  dispatch(loadBoards());
 }
 
 export const loadBoards = () => (dispatch) => {

@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-import { editBoard } from '../helper';
-
-import { loadBoards } from '../actions/newBoardActions';
-import { selectBoard } from '../actions/selectBoardActions';
+import { addListTask } from '../actions/ListActions';
 
 class AddListItem extends Component {
 
@@ -21,19 +18,16 @@ class AddListItem extends Component {
     // change
     e.preventDefault();
     if(this.state.text != ''){
-      const board = JSON.parse(JSON.stringify(this.props.board));
-      board.lists[this.props.index]['items'].push(this.state);
+      console.log(this.props);
+      this.props.addListTask(this.props, this.state);
       this.setState({ text: '' });
-      editBoard(board);
-      this.props.loadBoards();
-      this.props.selectBoard(this.props.board.id);
     }
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.text} onChange={this.handleChange}/>
+        <input placeholder='add task' type="text" value={this.state.text} onChange={this.handleChange}/>
       </form>
     )
   }
@@ -45,4 +39,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{ selectBoard, loadBoards })(AddListItem);
+export default connect(mapStateToProps,{ addListTask })(AddListItem);

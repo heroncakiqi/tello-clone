@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-import { toggleNewList } from '../actions/ListActions';
-import { selectBoard } from '../actions/selectBoardActions';
-import { editBoard } from '../helper';
-import { loadBoards } from '../actions/newBoardActions';
+import { toggleNewList, createNewList } from '../actions/ListActions';
 
 class NewList extends Component {
   state = {
@@ -18,29 +15,23 @@ class NewList extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if(this.state.name != ''){
-      const list = {
-        id: this.props.board.lists.length + 1,
-        ...this.state
-      }
-      const board = JSON.parse(JSON.stringify(this.props.board));
-      board.lists.push(list);
-      editBoard(board);
+      this.props.createNewList(this.props, this.state);
       this.setState({ name: '' });
-      this.props.loadBoards();
-      this.props.selectBoard(this.props.board.id);
     }
   }
   
   render() {
     const newList = (
-      <div className='card board-content' onClick={this.props.toggleNewList}>
+      <div style={{padding: '20px'}} className='card board-content' onClick={this.props.toggleNewList}>
         add a new list..
       </div>
     );
     const form = ( 
-      <form onSubmit={this.handleSubmit}> 
-        <input value={this.state.name} onChange={this.handleInput} type="text"/>
-      </form>
+      <div className='card board-content'>
+        <form onSubmit={this.handleSubmit}> 
+          <input value={this.state.name} onChange={this.handleInput} type="text"/>
+        </form>
+      </div>
     )
     return (
       <div className='col s3'>
@@ -59,4 +50,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { toggleNewList, selectBoard, loadBoards })(NewList)
+export default connect(mapStateToProps, { toggleNewList, createNewList })(NewList)
