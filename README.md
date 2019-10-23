@@ -1,4 +1,4 @@
-# Tello clone done with React/Redux
+# Tello clone built with React/Redux
 
 * Routing  
 * Drag and drop   
