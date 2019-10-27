@@ -4,3 +4,5 @@
 * Drag and drop   
 * Creating new objects (boards, lists, cards)
 * Local storage
+
+live demo: https://tello-clone.heroncakiq.now.sh
